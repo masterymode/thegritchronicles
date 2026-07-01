@@ -12,8 +12,13 @@ Vercel → Project → Settings → Environment Variables:
 
 - `LISTMONK_LIST_UUID` — your Listmonk list's UUID
 - `UMAMI_WEBSITE_ID` — from Umami
-- `UMAMI_SCRIPT_URL` — your Umami script URL
 - `SITE_URL` — your production domain (used in SEO tags, sitemap, robots.txt)
+
+Your Umami **script URL** is not an env var — `src/_data/site.js` hardcodes
+Umami Cloud's fixed URL (`https://cloud.umami.is/script.js`), same for every
+project on Umami Cloud. Only the website ID is per-project, so that's the
+only thing you set. If you're ever self-hosting Umami instead of using
+their cloud, update that one constant to your instance's URL.
 
 No `NEXT_PUBLIC_` prefixes needed this time — Eleventy is a static site
 generator, everything gets baked directly into the HTML at build time, so

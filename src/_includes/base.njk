@@ -36,7 +36,7 @@
 <body>
 {{ content | safe }}
 
-{% if site.umamiWebsiteId and site.umamiScriptUrl %}
+{% if site.umamiWebsiteId %}
 <script defer src="{{ site.umamiScriptUrl }}" data-website-id="{{ site.umamiWebsiteId }}"></script>
 {% endif %}
 <script src="/assets/js/track.js" defer></script>
