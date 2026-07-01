@@ -29,7 +29,6 @@ body{
 
 a{ color: inherit; }
 
-/* visible keyboard focus everywhere */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible{

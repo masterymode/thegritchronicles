@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:image" content="{{ site.url }}/logo.webp">
+<meta property="og:site_name" content="The Grit Chronicles">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ title }}">
+<meta name="twitter:description" content="{{ description }}">
+<meta name="twitter:image" content="{{ site.url }}/logo.webp">
+
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="/logo.webp">
+<link rel="stylesheet" href="/assets/css/style.css">
+
+{% set orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "The Grit Chronicles",
+  "description": site.description,
+  "url": site.url,
+  "logo": site.url + "/logo.webp"
+} %}
+<script type="application/ld+json">{{ orgSchema | dump | safe }}</script>
+</head>
+<body>
+{{ content | safe }}
+
+{% if site.umamiWebsiteId and site.umamiScriptUrl %}
+<script defer src="{{ site.umamiScriptUrl }}" data-website-id="{{ site.umamiWebsiteId }}"></script>
+{% endif %}
+<script src="/assets/js/track.js" defer></script>
+</body>
+</html>

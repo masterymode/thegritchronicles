@@ -1,22 +1,28 @@
-# The Grit Chronicles — website
+# The Grit Chronicles — website (Eleventy)
 
 ## 1. Add your files
 Drop these into `/public` (not included — you're adding them yourself):
 - `logo.webp`
 - `background.mp4`
-- `book.webp` (only needed once you flip `showProductCard` on in `config/sections.js`)
+- `book.webp` (only needed once you flip `showProductCard` on in `src/_data/sections.js`)
 
 ## 2. Env vars
 Copy `.env.example` to `.env.local` for local dev, and add the same keys in
 Vercel → Project → Settings → Environment Variables:
 
 - `LISTMONK_LIST_UUID` — your Listmonk list's UUID
-- `NEXT_PUBLIC_UMAMI_WEBSITE_ID` — from Umami
-- `NEXT_PUBLIC_UMAMI_SCRIPT_URL` — your Umami script URL
-- `NEXT_PUBLIC_SITE_URL` — your production domain (used in SEO tags, sitemap, robots.txt)
+- `UMAMI_WEBSITE_ID` — from Umami
+- `UMAMI_SCRIPT_URL` — your Umami script URL
+- `SITE_URL` — your production domain (used in SEO tags, sitemap, robots.txt)
+
+No `NEXT_PUBLIC_` prefixes needed this time — Eleventy is a static site
+generator, everything gets baked directly into the HTML at build time, so
+there's no client/server env var distinction to worry about. If you already
+added the `NEXT_PUBLIC_...` versions in Vercel from the earlier build,
+rename them to match the names above.
 
 ## 3. Toggle sections
-Everything on/off lives in one file: `config/sections.js`. No component
+Everything on/off lives in one file: `src/_data/sections.js`. No template
 digging required.
 
 ## 4. Run locally
@@ -24,16 +30,22 @@ digging required.
 npm install
 npm run dev
 ```
+Opens at http://localhost:8080
 
 ## 5. Deploy
 Push to GitHub, import into Vercel, add the env vars above, deploy.
+`vercel.json` already tells Vercel the build command and output folder.
 
 ## Notes
 - The subscribe form POSTs directly from the browser to your Listmonk
-  instance (`mail.vendro.cc`) — there's no backend proxy, so there's nothing
-  to keep warm or maintain server-side for it.
+  instance (`mail.vendro.cc`) — no backend proxy, nothing to maintain
+  server-side for it.
+- Every page is plain pre-built HTML — no JS framework runtime shipped.
+  The only JS on the page is `assets/js/track.js` (a few lines, for Umami
+  click/submit tracking) and Umami's own script.
 - Umami tracks pageviews and time-on-page automatically once the script
   loads. Custom events fired: `subscribe_submit`, `get_book_click`,
-  `social_click` (with a `platform` property).
+  `social_click` (with a `platform` property) — driven by `data-track` /
+  `data-platform` attributes in `src/index.njk`.
 - `/book` isn't built yet. The product card is off by default
   (`showProductCard: false`) so there's no dead link in the meantime.

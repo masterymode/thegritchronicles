@@ -1,5 +1,4 @@
-// Flip these to show/hide sections. No other file needs to change.
-export const sections = {
+export default {
   // "Get the book" card — turn on once /book exists and the book is live.
   showProductCard: false,
 
