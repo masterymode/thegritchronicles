@@ -14,7 +14,7 @@
   }
 
   var LINES = [
-    "Stop being a bitch.",
+    "Stop being a b*tch.",
     "Reject weakness, snowflake.",
     "Grit or die.",
     "Comfort is killing you.",
