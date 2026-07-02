@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+(function(){
+  try {
+    var today = new Date().toISOString().slice(0,10);
+    if (localStorage.getItem("gritIntroLastShown") !== today) {
+      document.documentElement.classList.add("show-intro");
+    }
+  } catch (e) {}
+})();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ title }}</title>
@@ -34,11 +44,16 @@
 <script type="application/ld+json">{{ orgSchema | dump | safe }}</script>
 </head>
 <body>
+<div class="intro-overlay" aria-hidden="true">
+  <p class="intro-line"></p>
+</div>
+
 {{ content | safe }}
 
 {% if site.umamiWebsiteId %}
 <script defer src="{{ site.umamiScriptUrl }}" data-website-id="{{ site.umamiWebsiteId }}"></script>
 {% endif %}
 <script src="/assets/js/track.js" defer></script>
+<script src="/assets/js/intro.js" defer></script>
 </body>
 </html>

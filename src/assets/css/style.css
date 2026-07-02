@@ -266,3 +266,56 @@ body > *:not(.bg-video){
     height:38px;
   }
 }
+
+/* ---------- INTRO EASTER EGG ---------- */
+.intro-overlay{
+  display:none;
+}
+
+html.show-intro .intro-overlay{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:fixed;
+  inset:0;
+  background:var(--black);
+  z-index:9999;
+  padding:24px;
+  text-align:center;
+}
+
+html.show-intro.intro-lift .intro-overlay{
+  transform:translateY(-100%);
+  transition:transform .7s cubic-bezier(.65,0,.35,1);
+}
+
+.intro-overlay .intro-line{
+  opacity:0;
+  color:var(--bone);
+  font-size:clamp(20px,5vw,32px);
+  font-weight:700;
+  letter-spacing:0.01em;
+  max-width:600px;
+  transition:opacity .4s ease;
+}
+
+.intro-overlay.intro-visible .intro-line{
+  opacity:1;
+}
+
+html.show-intro{
+  overflow:hidden;
+}
+
+html.show-intro.intro-lift{
+  overflow:auto;
+}
+
+@media (prefers-reduced-motion: reduce){
+  html.show-intro .intro-overlay{
+    display:none;
+  }
+  html.show-intro{
+    overflow:auto;
+  }
+}
