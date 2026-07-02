@@ -48,11 +48,15 @@ description: Aggressive, no-excuses motivation for people done making excuses. D
     Just pure grit.
   </p>
 
-  <form class="sub-bar listmonk-form" action="https://mail.vendro.cc/subscription/form" method="post" target="_blank" rel="noopener">
+  <form class="subscribe-form listmonk-form" action="https://mail.vendro.cc/subscription/form" method="post" target="_blank" rel="noopener">
     <input type="hidden" name="nonce">
-    <input type="email" name="email" placeholder="Enter your email" required>
     <input type="checkbox" name="l" value="{{ site.listmonkListUuid }}" checked hidden>
-    <button type="submit">Subscribe</button>
+    <div class="input-bar">
+      <input type="email" name="email" placeholder="Your best email..." required aria-label="Email Address">
+    </div>
+    <div class="btn-wrapper">
+      <button type="submit" class="subscribe-btn">Subscribe</button>
+    </div>
   </form>
   <p class="fine-print">No spam. Unsubscribe at anytime.</p>
   {% endif %}
