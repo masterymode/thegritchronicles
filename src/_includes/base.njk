@@ -1,16 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="show-intro">
 <head>
-<script>
-(function(){
-  try {
-    var today = new Date().toISOString().slice(0,10);
-    if (localStorage.getItem("gritIntroLastShown") !== today) {
-      document.documentElement.classList.add("show-intro");
-    }
-  } catch (e) {}
-})();
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ title }}</title>

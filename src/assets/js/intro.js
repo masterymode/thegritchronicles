@@ -1,7 +1,5 @@
 (function () {
   var html = document.documentElement;
-  if (!html.classList.contains("show-intro")) return;
-
   var overlay = document.querySelector(".intro-overlay");
   var lineEl = document.querySelector(".intro-line");
   if (!overlay || !lineEl) return;
@@ -10,17 +8,8 @@
     "(prefers-reduced-motion: reduce)"
   ).matches;
 
-  function markShownToday() {
-    try {
-      var today = new Date().toISOString().slice(0, 10);
-      localStorage.setItem("gritIntroLastShown", today);
-    } catch (e) {}
-  }
-
   if (prefersReducedMotion) {
     // CSS already hides the overlay outright for reduced motion.
-    // Still mark it as "shown" so nothing tries to run again today.
-    markShownToday();
     return;
   }
 
@@ -62,6 +51,5 @@
   setTimeout(function () {
     overlay.remove();
     html.classList.remove("show-intro", "intro-lift");
-    markShownToday();
   }, FADE_IN_MS + HOLD_MS + FADE_OUT_MS + LIFT_MS);
 })();
