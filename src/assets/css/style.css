@@ -101,8 +101,8 @@ body > *:not(.bg-video){
 
 /* ---------- EYEBROW ---------- */
 .eyebrow{
-  font-size:11px;
-  letter-spacing:0.32em;
+  font-size:13px;
+  letter-spacing:normal;
   text-transform:uppercase;
   color:var(--bone);
   font-weight:700;
@@ -286,9 +286,6 @@ body > *:not(.bg-video){
   }
   .social-row{
     gap:16px;
-  }
-  .eyebrow{
-    letter-spacing:0.24em;
   }
   .product-card{
     padding:8px 18px 8px 8px;
