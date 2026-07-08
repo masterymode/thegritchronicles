@@ -1,0 +1,14 @@
+{
+  "title": "The Grit Chronicles",
+  "description": "Learn real grit, mental toughness, and the mindset to handle any adversity life throws at you.",
+  "url": "https://thegritchronicles.com",
+  "year": 2026,
+  "contactEmail": "contact@thegritchronicles.com",
+  "checkout": {
+    "ebook": "https://sztgg4-0d.myshopify.com/cart/48900346740953:1?channel=buy_button",
+    "paperback": "https://sztgg4-0d.myshopify.com/cart/48900346708185:1?channel=buy_button"
+  },
+  "ogImage": "/assets/book/images/hero.webp",
+  "price": "14.99",
+  "priceCurrency": "USD"
+}

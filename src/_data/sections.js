@@ -1,6 +1,6 @@
 export default {
   // "Get the book" card — turn on once /book exists and the book is live.
-  showProductCard: false,
+  showProductCard: true,
 
   // Newsletter eyebrow + copy + subscribe form.
   showNewsletter: true,

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ book.title }} — {{ title | default("Without Grit, You Lose") }}</title>
+  <meta name="description" content="{{ book.description }}">
+  <link rel="canonical" href="{{ book.url }}{{ page.url }}">
+
+  <meta property="og:title" content="{{ book.title }} — {{ title | default('Without Grit, You Lose') }}">
+  <meta property="og:description" content="{{ book.description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ book.url }}{{ page.url }}">
+  <meta property="og:image" content="{{ book.url }}{{ book.ogImage }}">
+  <meta property="og:site_name" content="{{ book.title }}">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ book.title }} — {{ title | default('Without Grit, You Lose') }}">
+  <meta name="twitter:description" content="{{ book.description }}">
+  <meta name="twitter:image" content="{{ book.url }}{{ book.ogImage }}">
+
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/assets/book/css/base.css">
+  <link rel="stylesheet" href="/assets/book/css/components.css">
+  <link rel="stylesheet" href="/assets/book/css/sections.css">
+
+  {% set productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": book.title,
+    "description": book.description,
+    "url": book.url + page.url,
+    "image": book.url + book.ogImage,
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": book.priceCurrency,
+      "lowPrice": book.price,
+      "url": book.url + page.url,
+      "availability": "https://schema.org/InStock"
+    }
+  } %}
+  <script type="application/ld+json">{{ productSchema | dump | safe }}</script>
+</head>
+<body>
+  {{ content | safe }}
+
+  {% if site.umamiWebsiteId %}
+  <script defer src="{{ site.umamiScriptUrl }}" data-website-id="{{ site.umamiWebsiteId }}"></script>
+  {% endif %}
+  <script src="/assets/book/js/analytics.js" defer></script>
+  <script src="/assets/book/js/scroll-reveal.js" defer></script>
+</body>
+</html>

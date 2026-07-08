@@ -1,0 +1,48 @@
+<section class="product section section--brick" id="product">
+  <div class="container">
+    <div class="product-header">
+      <h2 class="section-title">Get the Book Today</h2>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-card-image">
+          <img src="/assets/book/images/product-ebook.webp" alt="The Grit Chronicles eBook" loading="lazy">
+        </div>
+        <div class="price-card-label">eBook</div>
+        <div class="price-row">
+          <span class="price-current">$14.99</span>
+          <span class="price-was">$19.99</span>
+        </div>
+        <ul class="price-features">
+          <li>Digital version</li>
+          <li>Read on any device</li>
+        </ul>
+        <a href="{{ book.checkout.ebook }}" class="cta-btn" data-track="buy_click" data-product="ebook" data-checkout-link>Get eBook</a>
+        {% include "book/partials/payment-badges.njk" %}
+      </div>
+
+      <div class="price-card price-card--featured">
+        <div class="price-card-badge">Most Popular</div>
+        <div class="price-card-image">
+          <img src="/assets/book/images/product-paperback.webp" alt="The Grit Chronicles paperback" loading="lazy">
+        </div>
+        <div class="price-card-label">Paperback</div>
+        <div class="price-row">
+          <span class="price-current">$28.99</span>
+          <span class="price-was">$35.99</span>
+        </div>
+        <ul class="price-features">
+          <li>Paperback perfect bound</li>
+          <li>Worldwide shipping</li>
+        </ul>
+        <a href="{{ book.checkout.paperback }}" class="cta-btn" data-track="buy_click" data-product="paperback" data-checkout-link>Get Paperback</a>
+        {% include "book/partials/payment-badges.njk" %}
+      </div>
+    </div>
+
+    <div class="product-reveal">
+      <p class="reveal-line" data-reveal>Your excuses have already cost you far more than this ever will.</p>
+    </div>
+  </div>
+</section>
