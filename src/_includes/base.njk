@@ -1,6 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" class="show-intro">
+<html lang="en" class="{% if page.url == '/' %}show-intro{% endif %}">
 <head>
+{% if page.url == '/' %}
+<script>
+// Runs immediately (not deferred) so it takes effect before the page
+// paints — no flash. Skips the intro overlay if it already played once
+// during this browser session (e.g. clicking "Back to the site" from
+// the confirm/already-subscribed pages shouldn't replay it).
+(function () {
+  try {
+    if (sessionStorage.getItem("gritIntroSeen")) {
+      document.documentElement.classList.remove("show-intro");
+    } else {
+      sessionStorage.setItem("gritIntroSeen", "1");
+    }
+  } catch (e) {
+    // sessionStorage unavailable (privacy mode, etc.) — just show the intro.
+  }
+})();
+</script>
+{% endif %}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ title }}</title>
@@ -34,9 +53,11 @@
 <script type="application/ld+json">{{ orgSchema | dump | safe }}</script>
 </head>
 <body>
+{% if page.url == '/' %}
 <div class="intro-overlay" aria-hidden="true">
   <p class="intro-line"></p>
 </div>
+{% endif %}
 
 {{ content | safe }}
 
@@ -48,3 +69,4 @@
 <script src="/assets/js/subscribe.js" defer></script>
 </body>
 </html>
+

@@ -2,11 +2,17 @@
 // to Listmonk's public API, instead of letting the browser navigate to
 // Listmonk's own hosted page.
 //
-// - On success: redirect to /confirm/, our own "check your email" page.
-// - If the email is already subscribed (Listmonk returns HTTP 409 for this):
-//   redirect to /already-subscribed/.
-// - Any other error (bad email, network issue): show a small inline message
-//   right here and let them fix it and try again, no redirect.
+// Listmonk's response body tells us exactly what happened via a
+// "has_optin" flag:
+//   - has_optin: true  -> a fresh confirmation e-mail was just sent
+//                         (brand-new subscriber, OR someone who never
+//                         confirmed the first time around and is trying
+//                         again) -> send them to /confirm/.
+//   - has_optin: false -> already fully confirmed, nothing to do
+//                         -> send them to /already-subscribed/.
+//
+// Any other error (bad email, network issue): show a small inline
+// message right here and let them fix it and try again, no redirect.
 //
 // If JavaScript fails to load for any reason, the form still works: it
 // falls back to a normal submit to the action/method/target already set
@@ -63,29 +69,25 @@
       })
     })
       .then(function (response) {
-        if (response.ok) {
-          window.location.href = CONFIRM_PAGE;
-          return null;
-        }
-
-        if (response.status === 409) {
-          window.location.href = ALREADY_SUBSCRIBED_PAGE;
-          return null;
-        }
-
-        // Any other error: read the message from the response body, if any.
         return response
           .json()
           .catch(function () {
             return {};
+          })
+          .then(function (data) {
+            return { ok: response.ok, data: data };
           });
       })
-      .then(function (data) {
-        // If we already redirected above, data is null — nothing left to do.
-        if (!data) return;
+      .then(function (result) {
+        if (result.ok) {
+          var hasOptin = !!(result.data && result.data.data && result.data.data.has_optin);
+          window.location.href = hasOptin ? CONFIRM_PAGE : ALREADY_SUBSCRIBED_PAGE;
+          return;
+        }
 
         var message =
-          (data && data.message) || "Something went wrong. Please try again.";
+          (result.data && result.data.message) ||
+          "Something went wrong. Please try again.";
         showError(message);
         setLoading(false);
       })
