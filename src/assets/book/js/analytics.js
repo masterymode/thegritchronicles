@@ -44,6 +44,18 @@
     link.href = link.href + separator + "attributes[stitch_id]=" + encodeURIComponent(stitchId);
   });
 
+  // Assign the same stitch ID as this session's Distinct ID. Umami computes
+  // the session ID as uuid(websiteId, id) whenever an id is present - so as
+  // long as the purchase event sent from n8n carries this same id, it lands
+  // in this exact session rather than a separate one.
+  if (typeof window.umami !== "undefined" && typeof window.umami.identify === "function") {
+    try {
+      window.umami.identify(getStitchId());
+    } catch (err) {
+      console.warn("umami identify failed:", err);
+    }
+  }
+
   // --- CTA / buy click tracking ---
   // Any element with data-track="event_name" gets tracked on click.
   // Optional data-section (which section the CTA lives in) and
