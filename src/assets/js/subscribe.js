@@ -1,7 +1,12 @@
 // Intercepts the newsletter form and submits it quietly in the background
 // to Listmonk's public API, instead of letting the browser navigate to
-// Listmonk's own hosted page. This keeps the person on this site and lets
-// us show our own on-brand "check your email" message.
+// Listmonk's own hosted page.
+//
+// - On success: redirect to /confirm/, our own "check your email" page.
+// - If the email is already subscribed (Listmonk returns HTTP 409 for this):
+//   redirect to /already-subscribed/.
+// - Any other error (bad email, network issue): show a small inline message
+//   right here and let them fix it and try again, no redirect.
 //
 // If JavaScript fails to load for any reason, the form still works: it
 // falls back to a normal submit to the action/method/target already set
@@ -12,12 +17,13 @@
   if (!form) return;
 
   var LISTMONK_API = "https://mail.vendro.cc/api/public/subscription";
+  var CONFIRM_PAGE = "/confirm/";
+  var ALREADY_SUBSCRIBED_PAGE = "/already-subscribed/";
 
   var emailInput = form.querySelector('input[name="email"]');
   var listInput = form.querySelector('input[name="l"]');
   var submitBtn = form.querySelector(".subscribe-btn");
   var btnLabel = form.querySelector(".subscribe-btn-label");
-  var successBox = document.getElementById("subscribeSuccess");
   var errorBox = document.getElementById("subscribeError");
 
   var defaultLabel = btnLabel ? btnLabel.textContent : "Subscribe";
@@ -40,7 +46,6 @@
   }
 
   form.addEventListener("submit", function (event) {
-    // Stop the native POST-to-a-new-tab behavior; we take over from here.
     event.preventDefault();
     clearError();
 
@@ -58,34 +63,31 @@
       })
     })
       .then(function (response) {
+        if (response.ok) {
+          window.location.href = CONFIRM_PAGE;
+          return null;
+        }
+
+        if (response.status === 409) {
+          window.location.href = ALREADY_SUBSCRIBED_PAGE;
+          return null;
+        }
+
+        // Any other error: read the message from the response body, if any.
         return response
           .json()
           .catch(function () {
             return {};
-          })
-          .then(function (data) {
-            return { ok: response.ok, data: data };
           });
       })
-      .then(function (result) {
-        if (result.ok) {
-          form.hidden = true;
-          if (successBox) successBox.hidden = false;
+      .then(function (data) {
+        // If we already redirected above, data is null — nothing left to do.
+        if (!data) return;
 
-          if (typeof window.umami !== "undefined") {
-            try {
-              window.umami.track("subscribe_success");
-            } catch (err) {
-              console.warn("umami track failed:", err);
-            }
-          }
-        } else {
-          var message =
-            (result.data && result.data.message) ||
-            "Something went wrong. Please try again.";
-          showError(message);
-          setLoading(false);
-        }
+        var message =
+          (data && data.message) || "Something went wrong. Please try again.";
+        showError(message);
+        setLoading(false);
       })
       .catch(function () {
         showError("Network error — check your connection and try again.");
