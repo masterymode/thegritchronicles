@@ -287,6 +287,32 @@ body > *:not(.bg-video){
   }
 }
 
+/* ---------- SUBSCRIBE SUCCESS / ERROR ---------- */
+.subscribe-success{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  width:100%;
+  padding:18px 0 4px;
+  animation: fade-in-up .5s ease both;
+}
+
+@keyframes fade-in-up{
+  from{ opacity:0; transform:translateY(6px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+.subscribe-error{
+  text-align:center;
+  font-size:13px;
+  color:var(--bone);
+  background:var(--black-2);
+  border:1px solid var(--line);
+  border-radius:6px;
+  padding:10px 16px;
+  margin-top:2px;
+}
+
 .fine-print{
   font-size:10px;
   color:var(--bone-dim);
