@@ -127,7 +127,7 @@ body > *:not(.bg-video){
   display:flex;
   flex-direction:column;
   width:100%;
-  background:var(--black-2);
+  background:rgba(10,10,10,0.5);
   border:1px solid var(--line);
   border-radius:16px;
   padding:12px;
@@ -196,7 +196,7 @@ body > *:not(.bg-video){
   gap:10px;
   width:100%;
   height:56px;
-  background:var(--black-2);
+  background:rgba(20,20,20,0.5);
   border:1px solid var(--line);
   border-radius:10px;
   color:var(--bone);
