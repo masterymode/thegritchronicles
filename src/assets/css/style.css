@@ -127,14 +127,13 @@ body > *:not(.bg-video){
   display:flex;
   flex-direction:column;
   width:100%;
-  background:var(--black);
-  border:1px solid var(--bone);
+  background:var(--black-2);
+  border:1px solid var(--line);
   border-radius:16px;
   padding:12px;
   margin-bottom:20px;
   transition: border-color .2s ease;
 }
-
 .product-card:hover{
   border-color:var(--accent);
 }
@@ -197,8 +196,8 @@ body > *:not(.bg-video){
   gap:10px;
   width:100%;
   height:56px;
-  background:var(--black);
-  border:1px solid var(--bone);
+  background:var(--black-2);
+  border:1px solid var(--line);
   border-radius:10px;
   color:var(--bone);
   text-decoration:none;
