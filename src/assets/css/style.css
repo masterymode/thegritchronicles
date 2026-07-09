@@ -127,13 +127,14 @@ body > *:not(.bg-video){
   display:flex;
   flex-direction:column;
   width:100%;
-  background:var(--black-2);
-  border:1px solid var(--line);
+  background:var(--black);
+  border:1px solid var(--bone);
   border-radius:16px;
   padding:12px;
   margin-bottom:20px;
   transition: border-color .2s ease;
 }
+
 .product-card:hover{
   border-color:var(--accent);
 }
