@@ -125,34 +125,94 @@ body > *:not(.bg-video){
 
 .product-card{
   display:flex;
-  align-items:center;
-  gap:16px;
+  flex-direction:column;
   width:100%;
   background:var(--black-2);
   border:1px solid var(--line);
-  border-radius:6px;
-  padding:10px 24px 10px 10px;
-  text-decoration:none;
-  color:var(--bone);
-  transition: border-color .2s ease, background .2s ease, transform .2s ease;
-  margin-bottom:36px;
+  border-radius:16px;
+  padding:12px;
+  margin-bottom:20px;
+  transition: border-color .2s ease;
 }
 .product-card:hover{
   border-color:var(--accent);
-  background:#181818;
-  transform:translateY(-1px);
 }
-.product-card img{
-  width:46px;
-  height:46px;
+.product-card-media{
+  width:100%;
+  aspect-ratio: 16 / 9;
+  border-radius:12px;
+  overflow:hidden;
+  margin-bottom:14px;
+}
+.product-card-media img{
+  width:100%;
+  height:100%;
   object-fit:cover;
-  border-radius:3px;
-  flex-shrink:0;
+  display:block;
 }
-.product-card span{
+
+/* Shared white pill CTA - reuses the subscribe button's decorative SVG */
+.pill-cta{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  height:48px;
+  text-decoration:none;
+  border-radius:6px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), inset 0 -2px 3px rgba(0,0,0,0.15);
+  transition: transform .35s ease;
+  animation: breathe-glow 2.6s ease-in-out infinite;
+}
+.pill-cta:hover{ transform:scale(1.03); }
+.pill-cta:active{ transform:scale(1.01); }
+.pill-cta svg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+}
+.pill-cta-label{
+  position:relative;
+  z-index:2;
+  color:#000;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .pill-cta{ animation:none; }
+}
+
+/* ---------- NEWSLETTER CTA BUTTON (homepage) ---------- */
+.newsletter-cta-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  width:100%;
+  height:56px;
+  background:var(--black);
+  border:1px solid var(--bone);
+  border-radius:10px;
+  color:var(--bone);
+  text-decoration:none;
   font-size:15px;
   font-weight:600;
-  letter-spacing:0.01em;
+  transition: background .2s ease, transform .2s ease;
+}
+.newsletter-cta-btn:hover{
+  background:var(--black-2);
+  transform:translateY(-1px);
+}
+.newsletter-cta-btn svg{
+  width:18px;
+  height:18px;
+  flex-shrink:0;
 }
 
 /* ---------- NEWSLETTER ---------- */
@@ -383,14 +443,7 @@ body > *:not(.bg-video){
     gap:16px;
   }
   .product-card{
-    padding:8px 18px 8px 8px;
-  }
-  .product-card img{
-    width:40px;
-    height:40px;
-  }
-  .product-card span{
-    font-size:14px;
+    padding:10px;
   }
   .newsletter-copy{
     font-size:15px;
