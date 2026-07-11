@@ -174,10 +174,11 @@
   .hero-book {
     flex: none;
     order: 1;
-    width: clamp(200px, 62vw, 300px);
+    width: clamp(160px, 50vw, 240px);
     max-width: 300px;
     margin: 0 auto;
   }
+  
   .hero-copy h1 {
     font-size: clamp(1.6rem, 7.5vw, 2.2rem);
     margin-bottom: clamp(10px, 3vw, 16px);
