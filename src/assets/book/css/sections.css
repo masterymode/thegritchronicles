@@ -181,14 +181,14 @@
   
   .hero-copy h1 {
     font-size: clamp(1.6rem, 7.5vw, 2.2rem);
-    margin-bottom: clamp(10px, 3vw, 16px);
+    margin-bottom: clamp(10px, 6vw, 20px);
   }
   .hero-copy .section-subtext {
     font-size: clamp(0.88rem, 3.8vw, 1rem);
-    margin-bottom: clamp(6px, 2vw, 10px);
+    margin-bottom: clamp(6px, 4vw, 14px);
   }
   .hero .cta-wrap {
-    margin-top: clamp(0.9rem, 3.5vw, 1.4rem);
+    margin-top: clamp(0.9rem, 7.5vw, 1.8rem);
   }
   .cta-wrap--left {
     justify-content: center;
