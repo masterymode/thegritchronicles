@@ -69,6 +69,17 @@ body > *:not(.bg-video){
   filter: grayscale(100%) contrast(1.1);
 }
 
+/* ---------- NEWSLETTER IMAGE ---------- */
+.newsletter-image{
+  display:block;
+  width:100%;
+  max-width:220px;
+  aspect-ratio: 1 / 1;
+  object-fit:cover;
+  margin:0 auto 24px;
+  border-radius:12px;
+}
+
 /* ---------- SOCIAL ICONS ---------- */
 .social-row{
   display:flex;
@@ -438,6 +449,10 @@ body > *:not(.bg-video){
   }
   .logo-wrap img{
     height:44px;
+  }
+  .newsletter-image{
+    max-width:180px;
+    margin-bottom:20px;
   }
   .social-row{
     gap:16px;
