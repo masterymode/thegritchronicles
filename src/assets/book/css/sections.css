@@ -101,7 +101,7 @@
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.75) 20%, rgba(10,10,10,0.4) 50%);
+  background: linear-gradient(90deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.40) 20%, rgba(10,10,10,0.4) 100%);
   z-index: 1;
 }
 
@@ -157,7 +157,7 @@
     padding-bottom: clamp(24px, 6vw, 40px);
   }
   .hero-overlay {
-    background: linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.92) 20%, rgba(10,10,10,1) 50%);
+    background: linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.40) 55%, rgba(10,10,10,1) 100%);
   }
   .hero-inner {
     display: flex;
