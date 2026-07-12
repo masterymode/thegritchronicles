@@ -135,7 +135,7 @@ body > *:not(.bg-video){
 }
 
 .product-card{
-  display:flex;
+  display:none;
   flex-direction:column;
   width:100%;
   background:rgba(10,10,10,0.5);
