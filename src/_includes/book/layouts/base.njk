@@ -11,13 +11,13 @@
   <meta property="og:description" content="{{ book.description }}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ book.url }}{{ page.url }}">
-  <meta property="og:image" content="{{ book.url }}{{ book.ogImage }}">
+  <meta property="og:image" content="{{ book.url }}{{ ogImage | default(book.ogImage) }}">
   <meta property="og:site_name" content="{{ book.title }}">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ book.title }} — {{ title | default('Without Grit, You Lose') }}">
   <meta name="twitter:description" content="{{ book.description }}">
-  <meta name="twitter:image" content="{{ book.url }}{{ book.ogImage }}">
+  <meta name="twitter:image" content="{{ book.url }}{{ ogImage | default(book.ogImage) }}">
 
   <meta name="theme-color" content="#0a0a0a">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -31,7 +31,7 @@
     "name": book.title,
     "description": book.description,
     "url": book.url + page.url,
-    "image": book.url + book.ogImage,
+    "image": book.url + (ogImage | default(book.ogImage)),
     "offers": {
       "@type": "AggregateOffer",
       "priceCurrency": book.priceCurrency,
