@@ -4,42 +4,42 @@
 
 @font-face {
   font-family: 'DM Sans';
-  src: url('/assets/book/fonts/DMSans-Regular.woff2') format('woff2');
+  src: url('/assets/fonts/DMSans-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'DM Sans';
-  src: url('/assets/book/fonts/DMSans-Medium.woff2') format('woff2');
+  src: url('/assets/fonts/DMSans-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'DM Sans';
-  src: url('/assets/book/fonts/DMSans-SemiBold.woff2') format('woff2');
+  src: url('/assets/fonts/DMSans-SemiBold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'DM Sans';
-  src: url('/assets/book/fonts/DMSans-Bold.woff2') format('woff2');
+  src: url('/assets/fonts/DMSans-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'DM Sans';
-  src: url('/assets/book/fonts/DMSans-ExtraBold.woff2') format('woff2');
+  src: url('/assets/fonts/DMSans-ExtraBold.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'DM Sans';
-  src: url('/assets/book/fonts/DMSans-Black.woff2') format('woff2');
+  src: url('/assets/fonts/DMSans-Black.woff2') format('woff2');
   font-weight: 900;
   font-style: normal;
   font-display: swap;

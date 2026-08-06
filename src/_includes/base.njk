@@ -30,17 +30,17 @@
 <meta property="og:description" content="{{ description }}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-<meta property="og:image" content="{{ site.url }}{{ ogImage | default('/og-image.jpg') }}">
+<meta property="og:image" content="{{ site.url }}{{ ogImage | default('/assets/shared/images/og-image.jpg') }}">
 <meta property="og:site_name" content="The Grit Chronicles">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ title }}">
 <meta name="twitter:description" content="{{ description }}">
-<meta name="twitter:image" content="{{ site.url }}{{ ogImage | default('/og-image.jpg') }}">
+<meta name="twitter:image" content="{{ site.url }}{{ ogImage | default('/assets/shared/images/og-image.jpg') }}">
 
 <meta name="theme-color" content="#0a0a0a">
 <link rel="icon" href="/favicon.ico">
-<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/shared/css/style.css">
 
 {% set orgSchema = {
   "@context": "https://schema.org",
@@ -48,7 +48,7 @@
   "name": "The Grit Chronicles",
   "description": site.description,
   "url": site.url,
-  "logo": site.url + "/logo.webp"
+  "logo": site.url + "/assets/shared/images/logo.webp"
 } %}
 <script type="application/ld+json">{{ orgSchema | dump | safe }}</script>
 </head>
@@ -64,10 +64,10 @@
 {% if site.umamiWebsiteId %}
 <script defer src="{{ site.umamiScriptUrl }}" data-website-id="{{ site.umamiWebsiteId }}"></script>
 {% endif %}
-<script src="/assets/js/track.js" defer></script>
-<script src="/assets/js/intro.js" defer></script>
-<script src="/assets/js/subscribe.js" defer></script>
-<script src="/assets/js/bg-video-fallback.js" defer></script>
+<script src="/assets/shared/js/track.js" defer></script>
+<script src="/assets/shared/js/intro.js" defer></script>
+<script src="/assets/shared/js/subscribe.js" defer></script>
+<script src="/assets/shared/js/bg-video-fallback.js" defer></script>
 </body>
 </html>
 
