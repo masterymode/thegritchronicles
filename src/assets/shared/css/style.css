@@ -116,7 +116,6 @@ body > *:not(.bg-video){
 .home-bio{
   font-size:14px;
   letter-spacing:normal;
-  text-transform:uppercase;
   color:var(--bone-dim);
   font-weight:600;
   text-align:center;
