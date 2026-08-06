@@ -1333,7 +1333,7 @@ a {
 
 .product-card__image {
   width: 100%;
-  max-width: 200px;
+  max-width: 260px;
   aspect-ratio: 1 / 1;
   border-radius: 10px;
   overflow: hidden;
@@ -1382,6 +1382,7 @@ a {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  align-items: center;   /* add this */
 }
 
 .product-card__features li {
@@ -1422,8 +1423,8 @@ a {
 .payment-badge img {
   height: 26px;
   width: auto;
-  filter: grayscale(100%) brightness(0.75);
-  opacity: 0.9;
+  filter: grayscale(100%) brightness(0) invert(1);
+  opacity: 0.5;
 }
 
 .product__reveal {
