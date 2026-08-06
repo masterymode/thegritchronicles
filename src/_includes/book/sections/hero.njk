@@ -1,20 +1,15 @@
-<section class="hero section section--black" id="hero">
-  <video class="hero-bg-video" autoplay muted loop playsinline>
-    <source src="/assets/book/video/hero-bg.mp4" type="video/mp4">
-  </video>
-  <div class="hero-overlay"></div>
+<section class="hero" id="hero">
+  <picture class="hero__media">
+    <source media="(max-height: 480px) and (orientation: landscape)" srcset="/assets/book/images/hero-desktop.webp">
+    <source media="(min-width: 900px)" srcset="/assets/book/images/hero-desktop.webp">
+    <img src="/assets/book/images/hero-mobile.webp" alt="The Grit Chronicles book standing on a Spartan shield beside a helmet and sword" loading="eager">
+  </picture>
 
-  <div class="container hero-inner">
-    <div class="hero-copy">
-      <h1>Without grit, you lose</h1>
-      <p class="section-subtext">Learn real grit, mental toughness, and the mindset to handle any adversity life throws at you.</p>
-      <div class="cta-wrap cta-wrap--left">
-        <a href="#product" class="cta-btn" data-track="cta_click" data-section="hero">Claim Your Grit</a>
-      </div>
-    </div>
+  <div class="hero__overlay"></div>
 
-    <div class="hero-book">
-      <img src="/assets/book/images/hero.webp" alt="The Grit Chronicles book cover" loading="eager">
-    </div>
+  <div class="hero__content">
+    <h1 class="hero__title">Battle your inner quitter and win.</h1>
+    <p class="hero__subtitle">A practical guide to becoming an unbreakable and relentless beast.</p>
+    <a href="#product" class="hero__cta" data-track="cta_click" data-section="hero">Claim Your Grit</a>
   </div>
 </section>
