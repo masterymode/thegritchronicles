@@ -112,6 +112,17 @@ body > *:not(.bg-video){
   filter: grayscale(100%) contrast(1.1);
 }
 
+/* ---------- HOME BIO ---------- */
+.home-bio{
+  font-size:14px;
+  letter-spacing:normal;
+  text-transform:uppercase;
+  color:var(--bone-dim);
+  font-weight:600;
+  text-align:center;
+  margin:0 0 28px;
+}
+
 /* ---------- NEWSLETTER IMAGE ---------- */
 .newsletter-image{
   display:block;
