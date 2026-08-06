@@ -900,7 +900,7 @@ a {
 
 .quotes__text {
   font-family: 'Lora', Georgia, serif;
-  font-style: italic;
+  font-style: normal;
   color: #ffffff;
   font-size: clamp(1.15rem, 2.4vw + 0.5vh, 1.6rem);
   line-height: 1.55;
@@ -951,6 +951,45 @@ a {
   margin: clamp(32px, 6vh, 48px) auto 0;
 }
 
+.quotes__roadmap {
+  position: relative;
+  max-width: 700px;
+  margin: clamp(32px, 6vh, 48px) auto 0;
+  padding: clamp(24px, 4vw, 34px) clamp(20px, 3.4vw, 30px);
+  border-radius: 14px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.quotes__roadmap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #141414;
+  -webkit-mask-image: var(--grit-mask);
+  mask-image: var(--grit-mask);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-position: center;
+  mask-position: center;
+  z-index: -1;
+}
+
+.quotes__roadmap p {
+  color: rgba(255, 255, 255, 0.88);
+  font-weight: 400;
+  font-size: clamp(0.95rem, 1.6vw + 0.2vh, 1.05rem);
+  line-height: 1.6;
+  text-align: center;
+  margin: 0;
+}
+
+.quotes__roadmap p + p {
+  margin-top: 14px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .quotes__slide {
     transition: opacity 0.3s ease;
@@ -982,13 +1021,39 @@ a {
 }
 
 .testimonial-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: clamp(20px, 4vh, 32px);
-  background: #141414;
-  border-radius: 14px;
   padding: clamp(20px, 3vw, 28px);
+  border-radius: 14px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.testimonial-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #141414;
+  -webkit-mask-image: var(--grit-mask);
+  mask-image: var(--grit-mask);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-position: center;
+  mask-position: center;
+  z-index: -1;
+}
+
+.testimonials__grid .testimonial-card:nth-child(odd)::before {
+  transform: scaleX(-1);
+}
+
+.testimonials__grid .testimonial-card:nth-child(even)::before {
+  transform: scaleY(-1);
 }
 
 .testimonial-card__quote {
