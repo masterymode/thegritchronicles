@@ -446,6 +446,7 @@ a {
 .watch {
   background: #000;
   padding: clamp(48px, 9vh, 96px) 6% clamp(24px, 4vh, 48px);
+  display: none;
 }
 
 .video-container {
