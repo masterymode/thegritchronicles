@@ -1,10 +1,10 @@
 # The Grit Chronicles — website (Eleventy)
 
 ## 1. Add your files
-Drop these into `/public` (not included — you're adding them yourself):
-- `logo.webp`
-- `background.mp4`
-- `book.webp` (only needed once you flip `showProductCard` on in `src/_data/sections.js`)
+These are not included in the repo — you add them yourself:
+- `src/assets/shared/images/logo.webp`
+- `public/background.mp4`
+- `src/assets/home/images/book.webp` (only needed once you flip `showProductCard` on in `src/_data/sections.js`)
 
 ## 2. Env vars
 Copy `.env.example` to `.env.local` for local dev, and add the same keys in
