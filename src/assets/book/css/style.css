@@ -1072,14 +1072,14 @@ a {
   font-size: clamp(1.4rem, 5vw + 0.3vh, 2.2rem);
   line-height: 1.28;
   letter-spacing: -0.01em;
-  max-width: 18ch;
+  max-width: 17ch;
 }
 
 .cta-band__text span {
   display: block;
   color: rgba(255, 255, 255, 0.5);
   font-weight: 400;
-  font-size: 0.55em;
+  font-size: 0.65em;
   margin-top: 0.6em;
 }
 
