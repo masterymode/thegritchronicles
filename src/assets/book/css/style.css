@@ -1042,7 +1042,7 @@ a {
    CTA BAND
    ========================================================= */
 .cta-band {
-  padding: 0 10% clamp(48px, 9vh, 96px);
+  padding: 0 6% clamp(48px, 9vh, 96px);
 }
 
 .cta-band__card {
@@ -1357,20 +1357,21 @@ a {
 
 .product-card__price-row {
   display: flex;
-  align-items: baseline;
-  gap: 10px;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 2px;
 }
 
 .product-card__price-current {
   color: #ffffff;
   font-weight: 700;
-  font-size: clamp(1.6rem, 3vw, 2rem);
+  font-size: clamp(1.75rem, 3.2vw, 2.2rem);
 }
 
 .product-card__price-was {
   color: rgba(255, 255, 255, 0.45);
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 0.8rem;
   text-decoration: line-through;
 }
 
@@ -1380,7 +1381,7 @@ a {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 14px;
 }
 
 .product-card__features li {
@@ -1419,9 +1420,10 @@ a {
 }
 
 .payment-badge img {
-  height: 18px;
+  height: 26px;
   width: auto;
-  opacity: 0.55;
+  filter: grayscale(100%) brightness(0.75);
+  opacity: 0.9;
 }
 
 .product__reveal {
@@ -1544,7 +1546,7 @@ a {
    ========================================================= */
 .about {
   background: #000;
-  padding: clamp(48px, 9vh, 96px) 6% clamp(24px, 4vh, 48px);
+  padding: clamp(20px, 3vh, 36px) 6% clamp(24px, 4vh, 48px);
 }
 
 .about__photo {
