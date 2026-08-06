@@ -1333,7 +1333,7 @@ a {
 
 .product-card__image {
   width: 100%;
-  max-width: 260px;
+  max-width: 360px;
   aspect-ratio: 1 / 1;
   border-radius: 10px;
   overflow: hidden;
