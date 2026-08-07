@@ -1785,8 +1785,8 @@ a {
 
 .barbed-divider__strip {
   position: absolute;
-  left: -15%;
-  width: 100%;
+  left: 0%;
+  width: 120%;
   top: 50%;
 }
 
