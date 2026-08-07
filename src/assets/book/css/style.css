@@ -1783,6 +1783,12 @@ a {
   z-index: 5;
 }
 
+@media (min-width: 900px) {
+  .barbed-divider {
+    height: clamp(70px, 8vw, 110px);
+  }
+}
+
 .barbed-divider__strip {
   position: absolute;
   left: -30%;
