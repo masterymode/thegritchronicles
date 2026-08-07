@@ -1775,7 +1775,11 @@ a {
    ========================================================= */
 .barbed-divider {
   position: relative;
-  width: 100%;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  margin-right: -50vw;
   height: clamp(90px, 14vw, 160px);
   overflow: hidden;
   background: #000;
