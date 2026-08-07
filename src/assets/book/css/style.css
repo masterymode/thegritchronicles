@@ -1777,7 +1777,7 @@ a {
 .barbed-divider {
   position: relative;
   width: 100%;
-  height: clamp(90px, 14vw, 160px);
+  height: clamp(70px, 8vw, 110px);
   overflow: visible;
   background: #000;
   z-index: 5;
