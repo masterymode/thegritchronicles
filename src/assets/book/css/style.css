@@ -1764,3 +1764,42 @@ a {
   color: rgba(255, 255, 255, 0.4);
   font-size: 0.85rem;
 }
+/* =========================================================
+   BARBED WIRE DIVIDER
+   Two copies of the same strip, rotated to opposite diagonals
+   so they cross like the reference image. One is a darker
+   grey, the other lighter, both semi-transparent against the
+   black background.
+   ========================================================= */
+.barbed-divider {
+  position: relative;
+  width: 100%;
+  height: clamp(90px, 14vw, 160px);
+  overflow: hidden;
+  background: #000;
+}
+
+.barbed-divider__strip {
+  position: absolute;
+  left: -8%;
+  width: 116%;
+  top: 50%;
+}
+
+.barbed-divider__strip svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.barbed-divider__strip--a {
+  transform: translateY(-50%) rotate(-7deg);
+  color: rgba(255, 255, 255, 0.14);
+  z-index: 1;
+}
+
+.barbed-divider__strip--b {
+  transform: translateY(-50%) rotate(7deg);
+  color: rgba(255, 255, 255, 0.36);
+  z-index: 2;
+}
