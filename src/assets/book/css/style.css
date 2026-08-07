@@ -1768,8 +1768,10 @@ a {
    BARBED WIRE DIVIDER
    Two copies of the same strip, rotated to opposite diagonals
    so they cross like the reference image. One is a darker
-   grey, the other lighter, both semi-transparent against the
-   black background.
+   solid grey, the other a lighter solid grey -- no transparency.
+   Each strip is oversized and pulled well past the container's
+   edges so the SVG's own thin/tapered start and end never enter
+   the visible frame; only the full-pattern middle is on screen.
    ========================================================= */
 .barbed-divider {
   position: relative;
@@ -1781,8 +1783,8 @@ a {
 
 .barbed-divider__strip {
   position: absolute;
-  left: -8%;
-  width: 116%;
+  left: -30%;
+  width: 160%;
   top: 50%;
 }
 
@@ -1794,12 +1796,12 @@ a {
 
 .barbed-divider__strip--a {
   transform: translateY(-50%) rotate(-7deg);
-  color: rgba(255, 255, 255, 0.14);
+  color: #242424;
   z-index: 1;
 }
 
 .barbed-divider__strip--b {
   transform: translateY(-50%) rotate(7deg);
-  color: rgba(255, 255, 255, 0.36);
+  color: #5c5c5c;
   z-index: 2;
 }
