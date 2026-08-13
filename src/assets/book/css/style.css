@@ -104,11 +104,10 @@ a {
   border-radius: 12px;
   color: #ffffff;
   font-weight: 700;
-  font-size: clamp(0.85rem, 2.6vw + 0.3vh, 1.05rem);
+  font-size: clamp(1rem, 2.6vw + 0.3vh, 1.05rem);
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  padding: clamp(12px, 1.6vh, 18px) clamp(24px, 6vw, 40px);
-  cursor: pointer;
+  padding: clamp(16px, 1.6vh, 18px) clamp(30px, 6vw, 40px);  cursor: pointer;
   outline: none;
   box-shadow: 0 0 45px rgba(0, 143, 65, 0.65);
   transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
