@@ -370,8 +370,8 @@ body > *:not(.bg-video){
   mask-image: var(--grit-mask);
   -webkit-mask-repeat:no-repeat;
   mask-repeat:no-repeat;
-  -webkit-mask-size:cover;
-  mask-size:cover;
+  -webkit-mask-size:100% 100%;
+  mask-size:100% 100%;
   -webkit-mask-position:center;
   mask-position:center;
 }
