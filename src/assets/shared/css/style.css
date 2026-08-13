@@ -368,10 +368,10 @@ body > *:not(.bg-video){
   background-color:#fff;
   -webkit-mask-image: var(--grit-mask);
   mask-image: var(--grit-mask);
-  -webkit-mask-repeat:repeat-x;
-  mask-repeat:repeat-x;
-  -webkit-mask-size:auto 100%;
-  mask-size:auto 100%;
+  -webkit-mask-repeat:no-repeat;
+  mask-repeat:no-repeat;
+  -webkit-mask-size:cover;
+  mask-size:cover;
   -webkit-mask-position:center;
   mask-position:center;
 }
