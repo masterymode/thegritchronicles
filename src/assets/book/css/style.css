@@ -20,6 +20,14 @@ body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
+@font-face {
+  font-family: 'Fjalla One';
+  src: url('/assets/fonts/FjallaOne-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 a {
   text-decoration: none;
 }
@@ -447,37 +455,33 @@ a {
 
 .intro__media {
   position: relative;
+  line-height: 0;
+}
+
+.intro__media-img {
+  display: block;
   width: 100%;
   height: clamp(260px, 38vw, 420px);
-  overflow: hidden;
-  background: #141414;
-}
-
-.intro__media img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
-  display: block;
+  object-position: center;
 }
 
-.intro__media::before,
-.intro__media::after {
-  content: "";
+/* soft fade to black on the top and bottom edges, same technique as "What's Inside" */
+.intro__media-fade {
   position: absolute;
-  left: 0;
-  right: 0;
-  height: 25%;
+  inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0) 14%
+    ),
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0) 14%
+    );
   pointer-events: none;
-}
-
-.intro__media::before {
-  top: 0;
-  background: linear-gradient(to bottom, #000000 0%, transparent 100%);
-}
-
-.intro__media::after {
-  bottom: 0;
-  background: linear-gradient(to top, #000000 0%, transparent 100%);
 }
 
 .intro__content {
@@ -526,7 +530,8 @@ a {
   align-items: center;
   justify-content: center;
   height: 48px;
-  font-weight: 900;
+  font-family: 'Fjalla One', 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 400;
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 1px;
