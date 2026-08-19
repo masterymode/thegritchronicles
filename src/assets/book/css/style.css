@@ -512,7 +512,8 @@ a {
 .slot-container {
   display: block;
   width: 100%;
-  height: 64px;
+  --slot-row: clamp(6.5rem, 16vw, 8.5rem);
+  height: var(--slot-row);
   overflow: hidden;
   margin-top: 6px;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%);
@@ -529,40 +530,22 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 64px;
+  height: var(--slot-row);
   font-family: 'Fjalla One', 'Inter', system-ui, -apple-system, sans-serif;
   font-weight: 400;
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: clamp(1.9rem, 6vw, 2.75rem);
+  font-size: clamp(5rem, 12vw, 6.5rem);
 }
 
 @keyframes slotRoll {
   0%, 15%   { transform: translateY(0); }
-  20%, 35%  { transform: translateY(-64px); }
-  40%, 55%  { transform: translateY(-128px); }
-  60%, 75%  { transform: translateY(-192px); }
-  80%, 95%  { transform: translateY(-256px); }
-  100%      { transform: translateY(-320px); }
-}
-
-@media (min-width: 640px) {
-  .slot-container,
-  .slot-text span {
-    height: 88px;
-  }
-  .slot-text span {
-    font-size: 3.4rem;
-  }
-  @keyframes slotRoll {
-    0%, 15%   { transform: translateY(0); }
-    20%, 35%  { transform: translateY(-88px); }
-    40%, 55%  { transform: translateY(-176px); }
-    60%, 75%  { transform: translateY(-264px); }
-    80%, 95%  { transform: translateY(-352px); }
-    100%      { transform: translateY(-440px); }
-  }
+  20%, 35%  { transform: translateY(calc(var(--slot-row) * -1)); }
+  40%, 55%  { transform: translateY(calc(var(--slot-row) * -2)); }
+  60%, 75%  { transform: translateY(calc(var(--slot-row) * -3)); }
+  80%, 95%  { transform: translateY(calc(var(--slot-row) * -4)); }
+  100%      { transform: translateY(calc(var(--slot-row) * -5)); }
 }
 
 @media (prefers-reduced-motion: reduce) {
