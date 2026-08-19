@@ -3,10 +3,13 @@ layout: book/layouts/base.njk
 title: Book
 ---
 {% include "book/sections/hero.njk" %}
+{% include "book/sections/intro-1.njk" %}
+{% include "book/sections/intro-2.njk" %}
 {% include "book/partials/marquee.njk" %}
 {% include "book/partials/barbed-wire.njk" %}
 {% include "book/sections/watch.njk" %}
-{% include "book/sections/premise.njk" %}
+{# "Life is War" premise section hidden — replaced by intro-1 / intro-2 #}
+{# {% include "book/sections/premise.njk" %} #}
 {% include "book/sections/whats-inside.njk" %}
 {% include "book/sections/quotes.njk" %}
 {% include "book/partials/barbed-wire.njk" %}

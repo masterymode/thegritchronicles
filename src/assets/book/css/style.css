@@ -436,6 +436,134 @@ a {
 }
 
 /* =========================================================
+   INTRO (punch / flag)
+   ========================================================= */
+.intro {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.intro__media {
+  position: relative;
+  width: 100%;
+  height: clamp(260px, 38vw, 420px);
+  overflow: hidden;
+  background: var(--black-2);
+}
+
+.intro__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.intro__media::before,
+.intro__media::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 25%;
+  pointer-events: none;
+}
+
+.intro__media::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--black) 0%, transparent 100%);
+}
+
+.intro__media::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--black) 0%, transparent 100%);
+}
+
+.intro__content {
+  max-width: 620px;
+  padding: clamp(20px, 4vw, 32px) 24px clamp(32px, 5vw, 48px);
+  text-align: center;
+}
+
+.intro__bold {
+  font-weight: 800;
+  color: var(--accent);
+  font-size: clamp(1.2rem, 2.6vw, 1.5rem);
+  line-height: 1.35;
+  margin-bottom: 14px;
+}
+
+.intro__body {
+  color: var(--bone-dim);
+  font-size: clamp(1rem, 1.6vw, 1.1rem);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.intro__cta {
+  margin-top: 16px;
+}
+
+.slot-container {
+  display: block;
+  width: 100%;
+  height: 48px;
+  overflow: hidden;
+  margin-top: 6px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%);
+}
+
+.slot-text {
+  display: flex;
+  flex-direction: column;
+  animation: slotRoll 8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+.slot-text span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  font-weight: 900;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+}
+
+@keyframes slotRoll {
+  0%, 15%   { transform: translateY(0); }
+  20%, 35%  { transform: translateY(-48px); }
+  40%, 55%  { transform: translateY(-96px); }
+  60%, 75%  { transform: translateY(-144px); }
+  80%, 95%  { transform: translateY(-192px); }
+  100%      { transform: translateY(-240px); }
+}
+
+@media (min-width: 640px) {
+  .slot-container,
+  .slot-text span {
+    height: 64px;
+  }
+  @keyframes slotRoll {
+    0%, 15%   { transform: translateY(0); }
+    20%, 35%  { transform: translateY(-64px); }
+    40%, 55%  { transform: translateY(-128px); }
+    60%, 75%  { transform: translateY(-192px); }
+    80%, 95%  { transform: translateY(-256px); }
+    100%      { transform: translateY(-320px); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slot-text {
+    animation: none;
+  }
+}
+
+/* =========================================================
    WATCH THIS
    ========================================================= */
 .watch {
