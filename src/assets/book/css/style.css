@@ -450,7 +450,7 @@ a {
   width: 100%;
   height: clamp(260px, 38vw, 420px);
   overflow: hidden;
-  background: var(--black-2);
+  background: #141414;
 }
 
 .intro__media img {
@@ -472,12 +472,12 @@ a {
 
 .intro__media::before {
   top: 0;
-  background: linear-gradient(to bottom, var(--black) 0%, transparent 100%);
+  background: linear-gradient(to bottom, #000000 0%, transparent 100%);
 }
 
 .intro__media::after {
   bottom: 0;
-  background: linear-gradient(to top, var(--black) 0%, transparent 100%);
+  background: linear-gradient(to top, #000000 0%, transparent 100%);
 }
 
 .intro__content {
@@ -488,14 +488,14 @@ a {
 
 .intro__bold {
   font-weight: 800;
-  color: var(--accent);
+  color: #ffffff;
   font-size: clamp(1.2rem, 2.6vw, 1.5rem);
   line-height: 1.35;
   margin-bottom: 14px;
 }
 
 .intro__body {
-  color: var(--bone-dim);
+  color: rgba(255, 255, 255, 0.72);
   font-size: clamp(1rem, 1.6vw, 1.1rem);
   line-height: 1.6;
   margin-bottom: 12px;
@@ -527,7 +527,7 @@ a {
   justify-content: center;
   height: 48px;
   font-weight: 900;
-  color: var(--accent);
+  color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: clamp(1.4rem, 4vw, 2rem);
