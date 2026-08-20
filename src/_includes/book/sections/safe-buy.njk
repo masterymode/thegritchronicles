@@ -1,8 +1,19 @@
 <section class="safety" id="safety">
-  <img class="safety__badge" src="/assets/book/images/safe-buy-seal.webp" alt="Safe Buy guarantee seal" loading="lazy">
+  <div class="safety__shield-stage">
+    <div class="safety__ring"></div>
+    <div class="safety__ring safety__ring--2"></div>
+    <svg class="safety__shield" viewBox="0 0 512 512" aria-hidden="true">
+      <path class="safety__shield-path"
+            d="M256 24 C300 78, 380 88, 452 88 C452 88, 452 300, 452 300
+               C452 400, 370 460, 256 500 C142 460, 60 400, 60 300
+               C60 300, 60 88, 60 88 C132 88, 212 78, 256 24 Z"/>
+      <path class="safety__check-path" d="M184 264 L236 316 L336 208"/>
+    </svg>
+  </div>
+
   <p class="safety__title">Your order is protected.</p>
   <p class="safety__subtext">
-    Payments are processed securely, and your information is never shared. If you have any questions, concerns, or issues with your order, just reach out to us at:
+    Your payment is secure. Your information stays private. And if you ever have a problem with your order, you won't be left hanging. Contact us anytime at:
   </p>
   <a href="mailto:{{ book.contactEmail }}" class="safety__email">{{ book.contactEmail }}</a>
 
