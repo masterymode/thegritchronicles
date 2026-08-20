@@ -789,6 +789,10 @@ a {
   margin: 0 0 clamp(28px, 5vh, 44px);
 }
 
+.inside__image-wrap--secondary {
+  margin: clamp(32px, 6vh, 52px) 0 0;
+}
+
 .inside__image {
   display: block;
   width: 100%;
@@ -800,6 +804,12 @@ a {
     aspect-ratio: 4 / 5;
     object-fit: cover;
     object-position: center;
+  }
+
+  /* less crop/zoom than the top image — raise this ratio further
+     (e.g. 4 / 3, then 16 / 9) to show even more of the source image */
+  .inside__image-wrap--secondary .inside__image {
+    aspect-ratio: 4 / 3;
   }
 }
 
