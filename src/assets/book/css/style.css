@@ -2113,7 +2113,6 @@ a {
     opacity: 1;
   }
 }
-
 /* =========================================================
    WALLPAPER PACK (BONUS) SECTION
    Note: book pages only load /assets/book/css/style.css (not
@@ -2124,7 +2123,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: clamp(48px, 8vw, 88px) 0;
+  padding: clamp(48px, 8vw, 88px) 20px;
   background: #000;
 }
 
@@ -2138,18 +2137,10 @@ a {
   width: 100%;
   height: auto;
   display: block;
-}
-
-@media (max-width: 899px) {
-  .wallpack__image {
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-    object-position: center;
-  }
+  border-radius: 14px;
 }
 
 .wallpack__header {
-  padding: 0 6%;
   max-width: 620px;
   text-align: center;
   margin-bottom: clamp(28px, 5vw, 40px);
@@ -2179,7 +2170,6 @@ a {
 }
 
 .wallpack__grid {
-  padding: 0 6%;
   width: 100%;
   max-width: 620px;
   display: grid;
