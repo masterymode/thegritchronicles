@@ -2113,6 +2113,7 @@ a {
     opacity: 1;
   }
 }
+
 /* =========================================================
    WALLPAPER PACK (BONUS) SECTION
    Note: book pages only load /assets/book/css/style.css (not
@@ -2148,7 +2149,7 @@ a {
 }
 
 .wallpack__header {
-  padding: 0 20px;
+  padding: 0 6%;
   max-width: 620px;
   text-align: center;
   margin-bottom: clamp(28px, 5vw, 40px);
@@ -2178,7 +2179,7 @@ a {
 }
 
 .wallpack__grid {
-  padding: 0 20px;
+  padding: 0 6%;
   width: 100%;
   max-width: 620px;
   display: grid;
