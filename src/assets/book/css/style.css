@@ -2123,25 +2123,29 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: clamp(48px, 8vw, 88px) 20px;
+  padding: clamp(48px, 8vw, 88px) 0;
   background: #000;
+}
+
+.wallpack__header {
+  max-width: 620px;
+  text-align: center;
+  margin-bottom: clamp(28px, 5vw, 40px);
+  padding: 0 20px;
 }
 
 .wallpack__image-wrap {
   position: relative;
   overflow: hidden;
-  border-radius: 14px;
   line-height: 0;
   width: 100%;
-  max-width: 1100px;
-  margin-bottom: clamp(28px, 5vw, 44px);
+  margin: 0 0 clamp(28px, 5vw, 44px);
 }
 
 .wallpack__image {
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
-  border-radius: 14px;
 }
 
 @media (max-width: 899px) {
@@ -2173,7 +2177,6 @@ a {
 .wallpack__header {
   max-width: 620px;
   text-align: center;
-  margin-bottom: clamp(28px, 5vw, 40px);
 }
 
 .eyebrow-pill {
@@ -2197,6 +2200,9 @@ a {
   color: rgba(255, 255, 255, 0.68);
   font-size: 1rem;
   line-height: 1.6;
+  max-width: 620px;
+  text-align: center;
+  padding: 0 20px;
 }
 
 .wallpack__grid {
@@ -2205,6 +2211,7 @@ a {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
+  padding: 0 20px;
 }
 
 .wallpack__card {
