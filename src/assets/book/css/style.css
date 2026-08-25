@@ -2113,3 +2113,98 @@ a {
     opacity: 1;
   }
 }
+/* =========================================================
+   WALLPAPER PACK (BONUS) SECTION
+   ========================================================= */
+.wallpack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(48px, 8vw, 88px) 20px;
+  background: var(--black);
+}
+
+.wallpack__image-wrap {
+  width: 100%;
+  max-width: 1100px;
+  margin-bottom: clamp(28px, 5vw, 44px);
+}
+
+.wallpack__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+}
+
+.wallpack__header {
+  max-width: 620px;
+  text-align: center;
+  margin-bottom: clamp(28px, 5vw, 40px);
+}
+
+.eyebrow-pill {
+  display: inline-block;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--bone-dim);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  margin-bottom: 16px;
+}
+
+.wallpack__header .section-title {
+  margin-bottom: 14px;
+}
+
+.wallpack__subtitle {
+  color: var(--bone-dim);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.wallpack__grid {
+  width: 100%;
+  max-width: 620px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.wallpack__card {
+  background: var(--black-2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.wallpack__icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--bone-dim);
+}
+
+.wallpack__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.wallpack__card-text {
+  color: var(--accent);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+@media (max-width: 480px) {
+  .wallpack__grid {
+    grid-template-columns: 1fr;
+  }
+}
