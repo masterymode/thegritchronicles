@@ -2115,13 +2115,16 @@ a {
 }
 /* =========================================================
    WALLPAPER PACK (BONUS) SECTION
+   Note: book pages only load /assets/book/css/style.css (not
+   the shared stylesheet), so colors here are hardcoded to match
+   the rest of this file rather than referencing shared :root vars.
    ========================================================= */
 .wallpack {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: clamp(48px, 8vw, 88px) 20px;
-  background: var(--black);
+  background: #000;
 }
 
 .wallpack__image-wrap {
@@ -2145,9 +2148,9 @@ a {
 
 .eyebrow-pill {
   display: inline-block;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: 999px;
-  color: var(--bone-dim);
+  color: rgba(255, 255, 255, 0.68);
   font-weight: 600;
   font-size: 0.75rem;
   letter-spacing: 0.08em;
@@ -2161,7 +2164,7 @@ a {
 }
 
 .wallpack__subtitle {
-  color: var(--bone-dim);
+  color: rgba(255, 255, 255, 0.68);
   font-size: 1rem;
   line-height: 1.6;
 }
@@ -2175,8 +2178,8 @@ a {
 }
 
 .wallpack__card {
-  background: var(--black-2);
-  border: 1px solid var(--line);
+  background-color: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 14px;
   padding: 20px;
   display: flex;
@@ -2188,7 +2191,7 @@ a {
   flex-shrink: 0;
   width: 24px;
   height: 24px;
-  color: var(--bone-dim);
+  color: rgba(255, 255, 255, 0.68);
 }
 
 .wallpack__icon svg {
@@ -2198,7 +2201,7 @@ a {
 }
 
 .wallpack__card-text {
-  color: var(--accent);
+  color: #ffffff;
   font-size: 0.875rem;
   font-weight: 500;
 }
