@@ -2137,13 +2137,6 @@ a {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 14px;
-}
-
-.wallpack__header {
-  max-width: 620px;
-  text-align: center;
-  margin-bottom: clamp(28px, 5vw, 40px);
 }
 
 @media (max-width: 899px) {
@@ -2152,6 +2145,12 @@ a {
     object-fit: cover;
     object-position: center;
   }
+}
+
+.wallpack__header {
+  max-width: 620px;
+  text-align: center;
+  margin-bottom: clamp(28px, 5vw, 40px);
 }
 
 .eyebrow-pill {
