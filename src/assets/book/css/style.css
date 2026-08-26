@@ -2130,7 +2130,6 @@ a {
 .wallpack__header {
   max-width: 620px;
   text-align: center;
-  margin-bottom: clamp(28px, 5vw, 40px);
   padding: 0 20px;
 }
 
@@ -2196,13 +2195,17 @@ a {
   margin-bottom: 14px;
 }
 
+.wallpack__subtitle-wrap {
+  max-width: 620px;
+  padding: 0 20px;
+  margin-bottom: clamp(28px, 5vw, 40px);
+}
+
 .wallpack__subtitle {
   color: rgba(255, 255, 255, 0.68);
   font-size: 1rem;
   line-height: 1.6;
-  max-width: 620px;
   text-align: center;
-  padding: 0 20px;
 }
 
 .wallpack__grid {
