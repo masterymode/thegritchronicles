@@ -2123,7 +2123,8 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: clamp(48px, 8vw, 88px) 0;
+  padding-top: clamp(24px, 4vw, 44px);
+  padding-bottom: clamp(48px, 8vw, 88px);
   background: #000;
 }
 
