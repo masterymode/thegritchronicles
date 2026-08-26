@@ -1012,7 +1012,7 @@ a {
    ========================================================= */
 .quotes {
   background: #000;
-  padding: clamp(20px, 3vh, 36px) 6% clamp(56px, 10vh, 100px);
+  padding: clamp(20px, 3vh, 36px) 6% clamp(28px, 5vh, 48px);
 }
 
 .quotes__slideshow {
