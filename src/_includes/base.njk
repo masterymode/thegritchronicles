@@ -52,7 +52,7 @@
 } %}
 <script type="application/ld+json">{{ orgSchema | dump | safe }}</script>
 </head>
-<body>
+<body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
 {% if page.url == '/' %}
 <div class="intro-overlay" aria-hidden="true">
   <p class="intro-line"></p>

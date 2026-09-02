@@ -189,7 +189,7 @@ body > *:not(.bg-video){
 }
 
 .product-card{
-  display:none;
+  display:flex;
   flex-direction:column;
   width:100%;
   background:rgba(10,10,10,0.5);
@@ -504,6 +504,73 @@ body > *:not(.bg-video){
   text-align:center;
   margin-top:14px;
   letter-spacing:0.02em;
+}
+
+/* ---------- NEWSLETTER: FIT VIEWPORT, NO SCROLL ---------- */
+/* Scales everything on the newsletter page against viewport height (dvh/vh)
+   so it fits on one screen on typical phones (e.g. Galaxy S24). Only on
+   very short viewports (see max-height:560px below) do we give up and
+   allow normal scrolling instead of squeezing content unreadably small. */
+body.newsletter-page{
+  height:100dvh;
+  min-height:100dvh;
+  overflow:hidden;
+  justify-content:center;
+  padding: clamp(12px, 4dvh, 64px) 24px;
+  padding-top: calc(clamp(12px, 4dvh, 64px) + env(safe-area-inset-top));
+  padding-bottom: calc(clamp(12px, 4dvh, 64px) + env(safe-area-inset-bottom));
+}
+
+body.newsletter-page .logo-wrap{
+  margin-bottom: clamp(8px, 3dvh, 28px);
+}
+body.newsletter-page .logo-wrap img{
+  height: clamp(30px, 6dvh, 56px);
+}
+
+body.newsletter-page .newsletter-image{
+  max-width: clamp(84px, 16dvh, 150px);
+  margin-bottom: clamp(8px, 2.5dvh, 24px);
+}
+
+body.newsletter-page .eyebrow-newsletter{
+  font-size: clamp(15px, 3dvh, 20px);
+  margin-bottom: clamp(8px, 2dvh, 20px);
+}
+
+body.newsletter-page .newsletter-copy{
+  font-size: clamp(13px, 2.2dvh, 17px);
+  line-height:1.4;
+  margin-bottom: clamp(4px, 1dvh, 8px);
+}
+body.newsletter-page .newsletter-copy.bold-line{
+  margin-top: clamp(6px, 1.5dvh, 14px);
+  margin-bottom: clamp(10px, 2.5dvh, 32px);
+}
+
+body.newsletter-page .subscribe-form{
+  gap: clamp(8px, 1.8dvh, 16px);
+}
+body.newsletter-page .input-bar{
+  padding: clamp(8px, 1.8dvh, 14px) 18px;
+}
+body.newsletter-page .subscribe-btn{
+  height: clamp(38px, 6dvh, 45px);
+}
+
+body.newsletter-page .fine-print{
+  margin-top: clamp(6px, 1.5dvh, 14px);
+}
+
+/* Genuinely tiny screens (old/small phones, landscape phones, split-screen):
+   stop shrinking further and just let the page scroll instead. */
+@media (max-height:560px){
+  body.newsletter-page{
+    height:auto;
+    min-height:100dvh;
+    overflow-y:auto;
+    justify-content:flex-start;
+  }
 }
 
 /* ---------- RESPONSIVE ---------- */
