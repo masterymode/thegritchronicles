@@ -51,6 +51,18 @@
   "logo": site.url + "/assets/shared/images/logo.webp"
 } %}
 <script type="application/ld+json">{{ orgSchema | dump | safe }}</script>
+
+{% if page.url != '/' %}
+{% set breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": site.url + "/" },
+    { "@type": "ListItem", "position": 2, "name": title, "item": site.url + page.url }
+  ]
+} %}
+<script type="application/ld+json">{{ breadcrumbSchema | dump | safe }}</script>
+{% endif %}
 </head>
 <body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
 {% if page.url == '/' %}
@@ -59,10 +71,21 @@
 </div>
 {% endif %}
 
+<main>
 {{ content | safe }}
+</main>
 
 {% if site.umamiWebsiteId %}
 <script defer src="{{ site.umamiScriptUrl }}" data-website-id="{{ site.umamiWebsiteId }}"></script>
+{% endif %}
+{% if site.clarityProjectId %}
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "{{ site.clarityProjectId }}");
+</script>
 {% endif %}
 <script src="/assets/shared/js/track.js" defer></script>
 <script src="/assets/shared/js/intro.js" defer></script>

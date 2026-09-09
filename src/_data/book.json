@@ -10,5 +10,6 @@
   },
   "ogImage": "/assets/book/images/og-image.jpg",
   "price": "14.99",
+  "paperbackPrice": "28.99",
   "priceCurrency": "USD"
 }

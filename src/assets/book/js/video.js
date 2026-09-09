@@ -1,28 +1,47 @@
-// Watch-this video section: click-to-play/pause, toggles the play button visibility.
+// Watch-this section: the Wistia embed's scripts (player.js + the
+// per-media embed script) are loaded only once the section is close to
+// the viewport, instead of on initial page load. Keeps 2 third-party
+// requests + their JS parse cost off the critical rendering path.
 (function () {
-  var video = document.getElementById("mainVideo");
   var container = document.getElementById("videoContainer");
-  var playBtn = document.getElementById("videoPlayBtn");
-  if (!video || !container || !playBtn) return;
+  if (!container) return;
 
-  function togglePlay() {
-    if (video.paused) {
-      video.play();
-    } else {
-      video.pause();
-    }
+  var loaded = false;
+
+  function loadWistia() {
+    if (loaded) return;
+    loaded = true;
+
+    var playerScript = document.createElement("script");
+    playerScript.src = "https://fast.wistia.com/player.js";
+    playerScript.async = true;
+    document.body.appendChild(playerScript);
+
+    var embedScript = document.createElement("script");
+    embedScript.src = "https://fast.wistia.com/embed/70fk1y91al.js";
+    embedScript.async = true;
+    embedScript.type = "module";
+    document.body.appendChild(embedScript);
   }
 
-  playBtn.addEventListener("click", togglePlay);
-  video.addEventListener("click", togglePlay);
+  if (!("IntersectionObserver" in window)) {
+    // No IO support — fall back to loading immediately so the video
+    // still works.
+    loadWistia();
+    return;
+  }
 
-  video.addEventListener("play", function () {
-    container.classList.add("is-playing");
-  });
-  video.addEventListener("pause", function () {
-    container.classList.remove("is-playing");
-  });
-  video.addEventListener("ended", function () {
-    container.classList.remove("is-playing");
-  });
+  var observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          loadWistia();
+          observer.disconnect();
+        }
+      });
+    },
+    { rootMargin: "500px 0px" } // start loading a bit before it's on screen
+  );
+
+  observer.observe(container);
 })();

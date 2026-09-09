@@ -21,12 +21,20 @@
 
   <meta name="theme-color" content="#0a0a0a">
   <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- Hero image is the LCP element on this page. Preloading it with high
+       priority means the browser fetches it immediately instead of waiting
+       to discover it via CSS/markup parsing. Media queries mirror hero.njk
+       exactly so the browser preloads the same variant it will render. -->
+  <link rel="preload" as="image" href="/assets/book/images/hero-desktop.webp" media="(min-width: 900px)" fetchpriority="high">
+  <link rel="preload" as="image" href="/assets/book/images/hero-mobile.webp" media="(max-width: 899px)" fetchpriority="high">
+
+  <!-- Inter/Lora are self-hosted below (see style.css) instead of loaded
+       from Google Fonts, removing an external DNS+TLS+CSS+font round trip
+       that previously blocked first paint. -->
   <link rel="stylesheet" href="/assets/book/css/style.css">
 
-  {% set productSchema = {
+  {% set bookSchema = {
     "@context": "https://schema.org",
     "@type": "Book",
     "name": book.title,
@@ -41,13 +49,91 @@
       "availability": "https://schema.org/InStock"
     }
   } %}
+  <script type="application/ld+json">{{ bookSchema | dump | safe }}</script>
+
+  {#- Separate Product entity so regular web search (not just Google Books)
+      can show price + rating rich results. Reviews/ratings live with the
+      testimonials section below, kept in sync with what's visibly on the
+      page — only the 3 currently-displayed testimonials are marked up. #}
+  {% set productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": book.title,
+    "description": book.description,
+    "image": book.url + (ogImage | default(book.ogImage)),
+    "url": book.url + page.url,
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "eBook",
+        "price": book.price,
+        "priceCurrency": book.priceCurrency,
+        "url": book.checkout.ebook,
+        "availability": "https://schema.org/InStock"
+      },
+      {
+        "@type": "Offer",
+        "name": "Paperback",
+        "price": book.paperbackPrice,
+        "priceCurrency": book.priceCurrency,
+        "url": book.checkout.paperback,
+        "availability": "https://schema.org/InStock"
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "3"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Chris B." },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "Whenever progress feels too slow and I feel like quitting, I remember this book. It changed what I expect the journey to feel like."
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Ryan P." },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "This pissed me off at first because the language is too blunt. But I needed some tough love to wake me up from my excuses. 10/10."
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Marcus R." },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "This book was just what I needed. I haven't been inspired enough to actually do something with my life in years."
+      }
+    ]
+  } %}
   <script type="application/ld+json">{{ productSchema | dump | safe }}</script>
+
+  {% set breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": book.url + "/" },
+      { "@type": "ListItem", "position": 2, "name": "Book", "item": book.url + page.url }
+    ]
+  } %}
+  <script type="application/ld+json">{{ breadcrumbSchema | dump | safe }}</script>
 </head>
 <body>
+  <main>
   {{ content | safe }}
+  </main>
 
   {% if site.umamiWebsiteId %}
   <script defer src="{{ site.umamiScriptUrl }}" data-website-id="{{ site.umamiWebsiteId }}"></script>
+  {% endif %}
+  {% if site.clarityProjectId %}
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "{{ site.clarityProjectId }}");
+  </script>
   {% endif %}
   <script src="/assets/book/js/analytics.js" defer></script>
   <script src="/assets/book/js/scroll-reveal.js" defer></script>

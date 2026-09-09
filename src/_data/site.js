@@ -10,5 +10,6 @@ export default function () {
     listmonkListUuid: process.env.LISTMONK_LIST_UUID || "",
     umamiWebsiteId: process.env.UMAMI_WEBSITE_ID || "",
     umamiScriptUrl: UMAMI_SCRIPT_URL,
+    clarityProjectId: process.env.CLARITY_PROJECT_ID || "yfcxwvtxra",
   };
 }

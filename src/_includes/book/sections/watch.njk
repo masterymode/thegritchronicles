@@ -2,8 +2,6 @@
   <h2 class="section-title">Watch this</h2>
 
   <div class="video-container" id="videoContainer">
-    <script src="https://fast.wistia.com/player.js" async></script>
-    <script src="https://fast.wistia.com/embed/70fk1y91al.js" async type="module"></script>
     <style>
       wistia-player[media-id='70fk1y91al']:not(:defined) {
         background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/70fk1y91al/swatch');
@@ -15,3 +13,13 @@
     <wistia-player media-id="70fk1y91al" aspect="1.7777777777777777"></wistia-player>
   </div>
 </section>
+
+{% set videoSchema = {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": book.title + " — Watch this",
+  "description": book.description,
+  "thumbnailUrl": ["https://fast.wistia.com/embed/medias/70fk1y91al/swatch"],
+  "embedUrl": "https://fast.wistia.net/embed/iframe/70fk1y91al"
+} %}
+<script type="application/ld+json">{{ videoSchema | dump | safe }}</script>

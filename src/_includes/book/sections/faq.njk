@@ -63,3 +63,59 @@
     </details>
   </div>
 </section>
+
+{% set faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How is this different from every other self-help book?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most books coddle you with theory and feel-good stories. This one doesn't. It's straightforward, focused on the principles that build grit and the exact drills to install them in your life from the moment you read it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it practical or just theory?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both. Every chapter breaks down a specific principle paired with practical steps. It gives you a direct breakdown and exactly what to do about it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long is the book?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every chapter is short and brutal — no filler. You can read it in a weekend, but the lessons will sit with you for a lifetime."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What format is it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "eBook (PDF) or physical paperback, shipped worldwide. Read the eBook on your phone, tablet, computer, or e-reader with instant access. Or hold the physical copy in your hands — your call."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you ship to my country?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We ship worldwide. We guarantee free shipping if you're in the US. Everywhere else, there might be a shipping fee calculated at checkout."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you have contact info if something goes wrong?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. If you have any issues, email us anytime at " + book.contactEmail + " and we'll sort it out."
+      }
+    }
+  ]
+} %}
+<script type="application/ld+json">{{ faqSchema | dump | safe }}</script>
