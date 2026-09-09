@@ -1,6 +1,12 @@
 // Wraps text in [data-reveal] elements into per-word spans, then lights
 // each word up progressively as the element scrolls through the viewport.
 // Falls back to an instant, fully-lit state if prefers-reduced-motion is set.
+//
+// Reads (getBoundingClientRect) and writes (classList changes) are batched
+// per animation frame via a single shared rAF loop, rather than running a
+// read+write cycle synchronously on every raw "scroll" event for every
+// element — the previous per-element/per-event pattern forced the browser
+// to recompute layout mid-scroll ("forced reflow").
 
 (function () {
   var prefersReducedMotion = window.matchMedia(
@@ -20,42 +26,62 @@
 
   function init() {
     var targets = document.querySelectorAll("[data-reveal]");
+    if (!targets.length) return;
 
+    var entries = [];
     targets.forEach(function (el) {
-      var words = wrapWords(el);
+      entries.push({ el: el, words: wrapWords(el) });
+    });
 
-      if (prefersReducedMotion) {
-        words.forEach(function (w) {
+    if (prefersReducedMotion) {
+      entries.forEach(function (entry) {
+        entry.words.forEach(function (w) {
           w.classList.add("is-lit");
         });
-        return;
-      }
+      });
+      return;
+    }
 
-      function update() {
-        var rect = el.getBoundingClientRect();
-        var vh = window.innerHeight;
+    var vh = window.innerHeight;
+    var ticking = false;
 
-        // Progress: 0 when element bottom hits viewport bottom,
-        // 1 when element top hits ~35% down the viewport.
+    function updateAll() {
+      ticking = false;
+      // Read phase: gather every rect first...
+      var progresses = entries.map(function (entry) {
+        var rect = entry.el.getBoundingClientRect();
         var start = vh;
-        var end = vh * 0.20;
+        var end = vh * 0.2;
         var raw = (start - rect.top) / (start - end);
-        var progress = Math.min(1, Math.max(0, raw));
+        return Math.min(1, Math.max(0, raw));
+      });
 
-        var litCount = Math.round(progress * words.length);
-        words.forEach(function (w, i) {
-          if (i < litCount) {
+      // ...then write phase: apply all class changes together.
+      entries.forEach(function (entry, i) {
+        var litCount = Math.round(progresses[i] * entry.words.length);
+        entry.words.forEach(function (w, j) {
+          if (j < litCount) {
             w.classList.add("is-lit");
           } else {
             w.classList.remove("is-lit");
           }
         });
-      }
+      });
+    }
 
-      window.addEventListener("scroll", update, { passive: true });
-      window.addEventListener("resize", update);
-      update();
+    function requestUpdate() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateAll);
+      }
+    }
+
+    window.addEventListener("resize", function () {
+      vh = window.innerHeight;
+      requestUpdate();
     });
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    updateAll();
   }
 
   if (document.readyState === "loading") {

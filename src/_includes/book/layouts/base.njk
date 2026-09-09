@@ -29,6 +29,14 @@
   <link rel="preload" as="image" href="/assets/book/images/hero-desktop.webp" media="(min-width: 900px)" fetchpriority="high">
   <link rel="preload" as="image" href="/assets/book/images/hero-mobile.webp" media="(max-width: 899px)" fetchpriority="high">
 
+  <!-- The hero title/subtitle/CTA render in Inter 600/400/700 respectively.
+       Preloading those specific weights lets the browser fetch them in
+       parallel with style.css instead of discovering them only after the
+       CSS finishes parsing (shortens the critical-path dependency chain). -->
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Inter-400.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Inter-600.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Inter-700.woff2" crossorigin>
+
   <!-- Inter/Lora are self-hosted below (see style.css) instead of loaded
        from Google Fonts, removing an external DNS+TLS+CSS+font round trip
        that previously blocked first paint. -->
